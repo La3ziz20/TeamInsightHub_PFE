@@ -1,0 +1,9 @@
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+/>
+<div [ngClass]="{ 'min-h-screen flex flex-row bg-gray-100': isUserLogged }">
+  <app-sidebar *ngIf="isUserLogged" class="sidbar"></app-sidebar>
+
+  <app-layout [ngClass]="{ 'main-container': isUserLogged }"></app-layout>
+</div>

@@ -1,0 +1,130 @@
+<app-breadcrumb [breadcrumbList]="breadcrumbList"></app-breadcrumb>
+
+<form
+  [formGroup]="clientForm"
+  class="max-w-xl mx-auto p-6 bg-slate-200 rounded-lg shadow-lg border-4 border-gray-900"
+>
+  <div class="border-b border-gray-900/10 pb-8">
+    <div class="mt-3 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+      <div class="sm:col-span-2">
+        <label
+          for="name"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Name</label
+        >
+        <div class="mt-2">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            [(ngModel)]="client.name"
+            formControlName="name"
+            autocomplete="given-name"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+          />
+          <div
+            *ngIf="clientForm.get('name')?.invalid && submitted"
+            class="text-red-600 text-xs mt-1"
+          >
+            name is required
+          </div>
+        </div>
+      </div>
+      <div class="sm:col-span-2">
+        <label
+          for="address"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Address</label
+        >
+        <div class="mt-2">
+          <input
+            id="address"
+            name="address"
+            type="text"
+            required
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+            [(ngModel)]="client.address"
+            formControlName="address"
+          />
+          <div
+            *ngIf="clientForm.get('address')?.invalid && submitted"
+            class="text-red-600 text-xs mt-1"
+          >
+            <div>address is required.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-full">
+        <label
+          for="email"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Email</label
+        >
+        <div class="mt-2">
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+            [(ngModel)]="client.email"
+            formControlName="email"
+          />
+          <div
+            *ngIf="clientForm.get('email')?.invalid && submitted"
+            class="text-red-600 text-xs mt-1"
+          >
+            <div *ngIf="clientForm.get('email')?.errors?.['required']">
+              Email address is required.
+            </div>
+            <div *ngIf="clientForm.get('email')?.errors?.['email']">
+              Please enter a valid email address.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-full">
+        <label
+          for="description"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Description</label
+        >
+        <div class="mt-2">
+          <textarea
+            [(ngModel)]="client.description"
+            id="description"
+            name="description"
+            rows="3"
+            required
+            formControlName="description"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+          ></textarea>
+          <div
+            *ngIf="clientForm.get('description')?.invalid && submitted"
+            class="text-red-600 text-xs mt-1"
+          >
+            <div>Description is required.</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-6 flex items-center justify-centre gap-x-6">
+        <button
+          type="button"
+          class="text-sm font-semibold leading-6 text-gray-900"
+          (click)="cancel()"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          (click)="save()"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

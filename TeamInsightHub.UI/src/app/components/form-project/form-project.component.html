@@ -1,0 +1,193 @@
+<app-breadcrumb [breadcrumbList]="breadcrumbList"></app-breadcrumb>
+
+<form
+  [formGroup]="projectForm"
+  class="max-w-xl mx-auto p-6 bg-slate-200 rounded-lg shadow-lg border-4 border-gray-900"
+>
+  <div class="border-b border-gray-900/10 pb-8">
+    <h2
+      class="text-base font-semibold leading-7 text-gray-900 underline decoration-yellow-300"
+    >
+      Project Information
+    </h2>
+
+    <div class="mt-3 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+      <div class="sm:col-span-2 align-content: center;">
+        <label
+          for="title"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Title</label
+        >
+        <div class="mt-2">
+          <input
+            type="text"
+            id="title"
+            name="title"
+            formControlName="title"
+            autocomplete="given-title"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+          />
+          <div
+            *ngIf="projectForm.get('title')?.invalid && submitted"
+            class="text-red-600 text-xs mt-1"
+          >
+            <div>Title is required.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-full">
+        <label
+          for="description"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Description</label
+        >
+        <div class="mt-2">
+          <textarea
+            id="description"
+            name="description"
+            required
+            formControlName="description"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5 border-x-4"
+          ></textarea>
+          <div
+            *ngIf="projectForm.get('description')?.invalid && submitted"
+            class="text-red-600 text-xs mt-1"
+          >
+            <div>Description is required.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-full">
+        <label for="status" class="block text-sm font-medium leading-6"
+          >Statut</label
+        >
+        <div class="mt-2">
+          <select
+            id="status"
+            name="status"
+            formControlName="status"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm focus:dark block w-full p-2.5"
+          >
+            <option value="" disabled selected>Choose a status</option>
+            <option value="In progress">In progress</option>
+            <option value="Completed">completed</option>
+            <option value="Not Started">Not Started</option>
+          </select>
+          <div
+            *ngIf="projectForm.get('status')?.invalid && submitted"
+            class="text-red-600 text-xs mt-1"
+          >
+            <div>Status is required.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-full">
+        <label
+          for="startDate"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >StartDate</label
+        >
+        <div class="mt-2">
+          <input
+            type="date"
+            id="startDate"
+            name="startDate"
+            formControlName="startDate"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+          />
+          <div
+            *ngIf="projectForm.get('startDate')?.invalid && submitted"
+            class="text-red-600 text-xs mt-1"
+          >
+            <div>StartDate is required.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-full">
+        <label
+          for="endDate"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >EndDate</label
+        >
+        <div class="mt-2">
+          <input
+            type="date"
+            id="endDate"
+            name="endDate"
+            formControlName="endDate"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+          />
+          <div
+            *ngIf="projectForm.get('endDate')?.invalid && submitted"
+            class="text-red-600 text-xs mt-1"
+          >
+            <div>EndDate is required.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-full">
+        <label
+          for="technology"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Technology</label
+        >
+        <div class="mt-2">
+          <textarea
+            id="technology"
+            name="technology"
+            rows="3"
+            required
+            formControlName="technology"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+          ></textarea>
+          <div
+            *ngIf="projectForm.get('technology')?.invalid && submitted"
+            class="text-red-600 text-xs mt-1"
+          >
+            <div>Technology is required.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-full">
+        <label
+          for="details"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Details</label
+        >
+        <div class="mt-2">
+          <textarea
+            id="details"
+            name="details"
+            rows="3"
+            required
+            formControlName="details"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+          ></textarea>
+          <div
+            *ngIf="projectForm.get('details')?.invalid && submitted"
+            class="text-red-600 text-xs mt-1"
+          >
+            <div>Details is required.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 flex items-center justify-centre gap-x-6">
+        <button
+          type="button"
+          class="text-sm font-semibold leading-6 text-gray-900"
+          (click)="cancel()"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          (click)="save()"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,28 @@
+<section class="bg-gray-50 dark:bg-gray-900">
+  <div class="flex flex-col items-center justify-center px-6 py-8 min-height lg:py-0">
+    <div class="w-full p-6 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
+      <h2 class="mb-1 text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+        Change {{ user?.firstname }} {{ user?.lastname }} Role
+      </h2>
+      <form [formGroup]="changeRoleForm" class="mt-4 space-y-4 lg:mt-5 md:space-y-5" (ngSubmit)="changeRole()">
+        <div>
+          <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Role</label>
+          <select formControlName="newRole" id="role" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+            <option *ngFor="let option of roleOptions" [value]="option.value">{{ option.label }}</option>
+          </select>
+          <small *ngIf="getController('newRole')?.invalid && (getController('newRole')?.dirty || getController('newRole')?.touched)" class="mt-1 block text-red-500">New role is required</small>
+        </div>
+        <button type="submit" [disabled]="changeRoleForm.invalid" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900 w-full" [ngClass]="{ 'cursor-not-allowed': changeRoleForm.invalid }">
+          Change Role
+        </button>
+        <button
+          type="button"
+          (click)="cancel()"
+          class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 w-full"
+        >
+          Cancel
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,276 @@
+<app-breadcrumb [breadcrumbList]="breadcrumbList"></app-breadcrumb>
+<div class="flex justify-center align-items-center h-full" *ngIf="User">
+  <form
+    [formGroup]="UserForm"
+    class="max-w-xl mx-auto p-6 bg-slate-200 rounded-lg shadow-lg border-4 border-gray-900"
+  >
+    <div class="mt-10 space-y-12">
+      <div class="border-b border-gray-900/10 pb-12">
+        <h2 class="text-base font-semibold leading-7 text-gray-900">
+          Personal Information
+        </h2>
+
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div class="sm:col-span-3">
+            <label
+              for="first-name"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >First name</label
+            >
+            <div class="mt-2">
+              <input
+                type="text"
+                id="firstname"
+                [(ngModel)]="User.firstname"
+                name="firstname"
+                formControlName="firstname"
+                autocomplete="given-name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+              />
+              <small
+                *ngIf="
+                  getController('firstname').invalid &&
+                  (getController('firstname').dirty ||
+                    getController('firstname').touched)
+                "
+                class="mt-1 block text-red-500"
+              >
+                <div *ngIf="getController('firstname').errors?.['required']">
+                  First-name is required
+                </div>
+                <div *ngIf="getController('firstname').errors?.['pattern']">
+                  First-name should be valid
+                </div>
+              </small>
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label
+              for="last-name"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Last name</label
+            >
+            <div class="mt-2">
+              <input
+                type="text"
+                id="lastname"
+                name="lastname"
+                [(ngModel)]="User.lastname"
+                formControlName="lastname"
+                autocomplete="family-name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+              />
+              <small
+                *ngIf="
+                  getController('lastname').invalid &&
+                  (getController('lastname').dirty ||
+                    getController('lastname').touched)
+                "
+                class="mt-1 block text-red-500"
+              >
+                <div *ngIf="getController('lastname').errors?.['required']">
+                  Last-name is required
+                </div>
+                <div *ngIf="getController('lastname').errors?.['pattern']">
+                  Last-name should be valid
+                </div>
+              </small>
+            </div>
+          </div>
+
+          <div class="col-span-full">
+            <label
+              for="street-address"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Street address</label
+            >
+            <div class="mt-2">
+              <input
+                type="text"
+                id="address"
+                name="address"
+                [(ngModel)]="User.address"
+                formControlName="address"
+                autocomplete="street-address"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+              />
+            </div>
+          </div>
+
+          <div class="col-span-full">
+            <div class="max-w-xs mx-auto">
+              <div class="relative">
+                <span class="absolute start-0 bottom-3 text-black">
+                  <svg
+                    class="w-4 h-4 rtl:rotate-[270deg]"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 19 18"
+                  >
+                    <path
+                      d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z"
+                    />
+                  </svg>
+                </span>
+                <input
+                  type="text"
+                  id="phone"
+                  name="phone"
+                  [(ngModel)]="User.phone"
+                  formControlName="phone"
+                  class="block py-2.5 ps-6 pe-0 w-full text-sm text-black dark:text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=""
+                />
+                <label
+                  for="floating-phone-number"
+                  class="absolute block text-sm font-medium leading-6 text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-placeholder-shown:start-6 peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                  >Phone number</label
+                >
+              </div>
+              <small
+                *ngIf="
+                  getController('phone').invalid &&
+                  (getController('phone').dirty ||
+                    getController('phone').touched)
+                "
+                class="mt-1 block text-red-500"
+              >
+                <div *ngIf="getController('phone').errors?.['required']">
+                  Phone-number is required
+                </div>
+                <div *ngIf="getController('phone').errors?.['pattern']">
+                  Phone-number should be valid
+                </div>
+              </small>
+            </div>
+          </div>
+
+          <div class="col-span-full">
+            <label
+              for="email"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Email address</label
+            >
+            <div class="mt-2">
+              <input
+                type="text"
+                id="email"
+                name="email"
+                [(ngModel)]="User.email"
+                formControlName="email"
+                autocomplete="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+              />
+              <div
+                *ngIf="
+                  getController('email').invalid &&
+                  (getController('email').dirty ||
+                    getController('email').touched)
+                "
+                class="text-red-600 text-xs mt-1"
+              >
+                <div *ngIf="getController('email').errors?.['required']">
+                  Email is required
+                </div>
+                <div *ngIf="getController('email').errors?.['email']">
+                  Email should be valid
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-b border-gray-900/10 pb-12">
+        <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
+        <p class="mt-1 text-sm leading-6 text-gray-600">
+          This information will be displayed publicly so be careful what you
+          share.
+        </p>
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div class="col-span-full">
+            <label
+              for="skils"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >skils</label
+            >
+            <div class="mt-2">
+              <textarea
+                id="skils"
+                name="skils"
+                [(ngModel)]="User.skils"
+                formControlName="skils"
+                autocomplete="text"
+                rows="3"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+              ></textarea>
+              <small
+                *ngIf="
+                  getController('skils').invalid &&
+                  (getController('skils').dirty ||
+                    getController('skils').touched)
+                "
+                class="mt-1 block text-red-500"
+              >
+                <div *ngIf="getController('skils').errors?.['required']">
+                  Skils is required
+                </div>
+              </small>
+            </div>
+          </div>
+          <div class="col-span-full">
+            <label
+              for="certificate"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Certificate</label
+            >
+            <div class="mt-2">
+              <textarea
+                id="certificate"
+                name="certificate"
+                [(ngModel)]="User.certificate"
+                formControlName="certificate"
+                autocomplete="text"
+                rows="3"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+              ></textarea>
+              <small
+                *ngIf="
+                  getController('certificate').invalid &&
+                  (getController('certificate').dirty ||
+                    getController('certificate').touched)
+                "
+                class="mt-1 block text-red-500"
+              >
+                <div *ngIf="getController('certificate').errors?.['required']">
+                  Certificate is required
+                </div>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 flex justify-center gap-x-6 w-full">
+      <button
+        type="submit"
+        (click)="cancel()"
+        class="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      >
+        Cancel
+      </button>
+      <button
+        [disabled]="UserForm.invalid"
+        type="submit"
+        (click)="save()"
+        class="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      >
+        Save
+      </button>
+    </div>
+    <br />
+  </form>
+</div>

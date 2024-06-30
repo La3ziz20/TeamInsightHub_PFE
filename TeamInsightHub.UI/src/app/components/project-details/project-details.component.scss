@@ -1,0 +1,14 @@
+.hidden {
+  display: none;
+}
+
+.table-container {
+  overflow-x: auto; /* This property makes it scrollable horizontally */
+  border: 1px solid #ccc; /* Optional: Add border for better visualization */
+}
+
+/* Optional: Style the table for better visualization */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}

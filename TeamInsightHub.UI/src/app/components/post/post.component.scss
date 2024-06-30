@@ -1,0 +1,14 @@
+.horizontal-line {
+  border: none; /* Removes the default border */
+  border-top: 1px solid black;
+  margin: 20px 0;
+}
+
+.string-code {
+  display: block;
+  padding: 10px;
+  background-color: #3b3737;
+  color: rgb(90, 157, 184);
+  border-radius: 4px;
+  font-family: "Courier New", Courier, monospace;
+}
